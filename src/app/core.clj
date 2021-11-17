@@ -13,7 +13,3 @@
       (vals
         (merge-with - word-freqs
                     (select-keys scrambled-freqs (keys word-freqs)))))))
-
-(scramble? "rekqodlw" "world") ; ==> true
-(scramble? "cedewaraaossoqqyt" "codewars") ;  ==> true
-(scramble? "katas" "steak") ; ==> false
