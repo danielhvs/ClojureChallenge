@@ -1,15 +1,18 @@
 (ns app.core)
 
+(defn less-than-or-equal-zero []
+  (complement pos?))
+
 (defn scramble?
-  "returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false"
-  [str1 str2]
-  (let [mapa1 (frequencies str1)
-        mapa2 (frequencies str2)]
+  "returns true if a portion of scrambled-word characters can be rearranged to match word, otherwise returns false"
+  [scrambled-word word]
+  (let [scrambled-freqs (frequencies scrambled-word)
+        word-freqs (frequencies word)]
     (every?
-      (complement pos?)
+      (less-than-or-equal-zero)
       (vals
-        (merge-with - mapa2
-                    (select-keys mapa1 (keys mapa2)))))))
+        (merge-with - word-freqs
+                    (select-keys scrambled-freqs (keys word-freqs)))))))
 
 (scramble? "rekqodlw" "world") ; ==> true
 (scramble? "cedewaraaossoqqyt" "codewars") ;  ==> true
