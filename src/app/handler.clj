@@ -1,11 +1,11 @@
 (ns app.handler
   (:require
-    [compojure.core :refer :all]
+    [compojure.core :as c]
     [compojure.route :as route]
     [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
-(defroutes app-routes
-  (GET "/" [] "Hello World")
+(c/defroutes app-routes
+  (c/GET "/" [] "Hello World")
   (route/not-found "Not Found"))
 
 (def app
