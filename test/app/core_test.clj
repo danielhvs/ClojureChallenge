@@ -3,6 +3,9 @@
     [app.core :as app]
     [clojure.test :refer [deftest testing is]]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest scrambled
+  (testing "Scrambled words"
+    (is (true? (app/scramble? "rekqodlw" "world")))
+    (is (true? (app/scramble? "cedewaraaossoqqyt" "codewars"))))
+  (testing "Not scrambled words"
+    (is (false? (app/scramble? "katas" "steak")))))
