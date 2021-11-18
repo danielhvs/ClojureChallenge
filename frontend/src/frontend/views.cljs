@@ -11,8 +11,18 @@
              :on-change #(re-frame/dispatch
                            [event (-> % .-target .-value)])}]))
 
+(defn button [on-click]
+  [:button
+   {:type "submit" :on-click on-click}
+   "Go!"])
+
 (defn main-panel []
-  [:div
-   [input-field ::subs/scrambled-word ::events/scrambled-word]
-   [input-field ::subs/word ::events/word]])
+  (let [response (re-frame/subscribe [::subs/response])
+        scrambled-word (re-frame/subscribe [::subs/scrambled-word])
+        word (re-frame/subscribe [::subs/word])]
+    [:div
+     [:h1 (str @response)]
+     [input-field ::subs/scrambled-word ::events/scrambled-word]
+     [input-field ::subs/word ::events/word]
+     [button #(re-frame/dispatch [::events/scramble @scrambled-word @word])]]))
 

@@ -16,3 +16,8 @@
   ::scrambled-word
   (fn [db]
     (:scrambled-word db)))
+
+(re-frame/reg-sub
+  ::response
+  (fn [db]
+    (:response db)))
