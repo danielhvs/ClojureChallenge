@@ -7,10 +7,22 @@
     [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
     [ring.util.response :as r]))
 
+(def only-lower-case-letters? (partial re-matches #"[a-z]+"))
+(def invalid? (complement only-lower-case-letters?))
+
 (defn scramble? [scrambled-word word]
-  (r/response
-    (json/write-str {:scrambled
-                       (s/scramble? scrambled-word word)})))
+  (let [invalid-inputs (filter invalid? [scrambled-word word])
+        bad-request 400]
+    (cond (seq invalid-inputs)
+            (-> {:error-msg "Only lower case letters are accepted"
+                 :invalid-inputs invalid-inputs}
+                json/write-str
+                r/response
+                (r/status bad-request))
+          :else
+            (-> {:scrambled (s/scramble? scrambled-word word)}
+                json/write-str
+                r/response))))
 
 (cpj/defroutes app-routes
   (cpj/GET "/scramble/:scrambled-word/:word"
