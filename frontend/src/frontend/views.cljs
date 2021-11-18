@@ -4,14 +4,15 @@
     [frontend.subs :as subs]
     [re-frame.core :as re-frame]))
 
-(defn input-field []
-  (let [value (re-frame/subscribe [::subs/scrambled-word])]
+(defn input-field [subscription event]
+  (let [value (re-frame/subscribe [subscription])]
     [:input {:type "text"
              :value @value
              :on-change #(re-frame/dispatch
-                           [::events/scrambled-word (-> % .-target .-value)])}]))
+                           [event (-> % .-target .-value)])}]))
 
 (defn main-panel []
   [:div
-   [input-field]])
+   [input-field ::subs/scrambled-word ::events/scrambled-word]
+   [input-field ::subs/word ::events/word]])
 

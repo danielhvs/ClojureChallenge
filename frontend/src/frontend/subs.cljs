@@ -8,6 +8,11 @@
     (:name db)))
 
 (re-frame/reg-sub
+  ::word
+  (fn [db]
+    (:word db)))
+
+(re-frame/reg-sub
   ::scrambled-word
   (fn [db]
     (:scrambled-word db)))

@@ -4,6 +4,11 @@
     [re-frame.core :as re-frame]))
 
 (re-frame/reg-event-db
+  ::word
+  (fn [db [_ input]]
+    (assoc db :word input)))
+
+(re-frame/reg-event-db
   ::scrambled-word
   (fn [db [_ input]]
     (assoc db :scrambled-word input)))
