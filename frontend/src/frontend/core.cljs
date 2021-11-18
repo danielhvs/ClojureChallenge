@@ -1,12 +1,10 @@
 (ns frontend.core
   (:require
-   [reagent.dom :as rdom]
-   [re-frame.core :as re-frame]
-   [frontend.events :as events]
-   [frontend.views :as views]
-   [frontend.config :as config]
-   ))
-
+    [frontend.config :as config]
+    [frontend.events :as events]
+    [frontend.views :as views]
+    [re-frame.core :as re-frame]
+    [reagent.dom :as rdom]))
 
 (defn dev-setup []
   (when config/debug?
