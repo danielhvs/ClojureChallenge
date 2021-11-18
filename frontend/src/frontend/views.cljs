@@ -17,6 +17,12 @@
    {:type "submit" :on-click on-click}
    "Analize"])
 
+(defn parse-response [response]
+  (or (get {true "Yes! The scrambled word It's a 'superset'."
+            false "Nope. The scrambled word is not a 'superset'."}
+           (:scrambled response))
+      response))
+
 (defn main-panel []
   (let [response (re-frame/subscribe [::subs/response])
         scrambled-word (re-frame/subscribe [::subs/scrambled-word])
@@ -31,5 +37,5 @@
       [input-field ::subs/scrambled-word ::events/scrambled-word
        {:placeholder "Type the scrambled word"}]
       [button #(re-frame/dispatch [::events/scramble @scrambled-word @word])]
-      [:h2 (str @response)]]]))
-
+      [:h3.result (->> @response
+                       parse-response)]]]))
