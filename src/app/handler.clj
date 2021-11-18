@@ -22,7 +22,8 @@
           :else
             (-> {:scrambled (s/scramble? scrambled-word word)}
                 json/write-str
-                r/response))))
+                r/response
+                (r/header "Access-Control-Allow-Origin" "*")))))
 
 (cpj/defroutes app-routes
   (cpj/GET "/scramble/:scrambled-word/:word"
