@@ -33,7 +33,7 @@
 (re-frame/reg-event-fx
   ::scramble
   (fn [{:keys [db]} [_ scrambled-word word]]
-    (let [api (str "http://localhost:3000/scramble/" scrambled-word "/" word)]
+    (let [api (str "http://localhost:3000/scramble/?scrambled-word=" scrambled-word "&word=" word)]
       {:db db
        :http-xhrio {:method :get
                     :uri api
