@@ -2,7 +2,8 @@
 
 A [re-frame](https://github.com/day8/re-frame) application designed for the Flexiana test task.
 
-* TL;DR:
+## TL;DR:
+
 1. Run the scripts
 ```sh
 npm install
