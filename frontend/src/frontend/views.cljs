@@ -30,10 +30,10 @@
     [:div
      [:img {:src "https://flexiana.com/app/themes/flexianacom/dist/assets/images/logo_flexiana_gold.svg"}]
      [:div
-      [:label {:for "fname"} "The word (only lower case letters)"]
+      [:label "The word (only lower case letters)"]
       [input-field ::subs/word ::events/word
        {:placeholder "Type the regular word"}]
-      [:label {:for "fname"} "Scrambled word (only lower case letters too)"]
+      [:label "Scrambled word (only lower case letters too)"]
       [input-field ::subs/scrambled-word ::events/scrambled-word
        {:placeholder "Type the scrambled word"}]
       [button #(re-frame/dispatch [::events/scramble @scrambled-word @word])]
