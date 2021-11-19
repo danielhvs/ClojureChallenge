@@ -1,7 +1,14 @@
 # frontend
 
-A [re-frame](https://github.com/day8/re-frame) application designed to ... well, that part is up to
-you.
+A [re-frame](https://github.com/day8/re-frame) application designed for the Flexiana test task.
+
+* TL;DR:
+1. Run the scripts
+```sh
+npm install
+npm run watch
+```
+2. Browse [http://localhost:8280/](http://localhost:8280/)
 
 ## Getting Started
 
