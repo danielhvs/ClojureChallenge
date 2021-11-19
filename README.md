@@ -6,7 +6,7 @@ Test task for Flexiana
 * [frontend](https://github.com/danielhvs/ClojureChallenge/tree/main/frontend) the client
 
 ### Main dependencies
-* [lein](https://leiningen.org/) as a build tool.
+* [shadow-cljs](https://github.com/thheller/shadow-cljs) as a build tool.
 * [hiccup](https://github.com/weavejester/hiccup) lib to abstract html.
 * [reagent](https://reagent-project.github.io/) lib for react-js like development.
 * [re-frame](https://github.com/day8/re-frame) lib for data-oriented functional SPA applications.
