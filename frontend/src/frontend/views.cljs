@@ -18,7 +18,7 @@
    "Analize"])
 
 (defn parse-response [response]
-  (or (get {true "Yes! The scrambled word It's a 'superset'."
+  (or (get {true "Yes! The scrambled word is a 'superset'."
             false "Nope. The scrambled word is not a 'superset'."}
            (:superset? response))
       response))
