@@ -10,13 +10,13 @@
     (let [response (h/app (mock/request :get "/scramble/?scrambled-word=hsoue&word=house"))]
       (is (= (:status response) 200))
       (is (= (:body response)
-             (json/write-str {:scrambled true})))))
+             (json/write-str {:superset? true})))))
 
   (testing "Scrambled is not subset"
     (let [response (h/app (mock/request :get "/scramble/?scrambled-word=houe&word=house"))]
       (is (= (:status response) 200))
       (is (= (:body response)
-             (json/write-str {:scrambled false})))))
+             (json/write-str {:superset? false})))))
 
   (testing "Invalid input is the scrambled word"
     (let [response (h/app (mock/request :get "/scramble/?scrambled-word=ho2e&word=house"))]

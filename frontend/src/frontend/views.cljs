@@ -20,7 +20,7 @@
 (defn parse-response [response]
   (or (get {true "Yes! The scrambled word It's a 'superset'."
             false "Nope. The scrambled word is not a 'superset'."}
-           (:scrambled response))
+           (:superset? response))
       response))
 
 (defn main-panel []

@@ -24,7 +24,7 @@
                 r/response
                 (r/status bad-request))
           :else
-            (-> {:scrambled (s/scramble? scrambled-word word)}
+            (-> {:superset? (s/scramble? scrambled-word word)}
                 json/write-str
                 r/response))))
 
